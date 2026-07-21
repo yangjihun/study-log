@@ -5,6 +5,7 @@ const path = require('path'); // path: 경로 관련 모듈 불러오기
 const session = require('express-session'); // express-session: 세션 관리 모듈 불러오기
 const nunjucks = require('nunjucks');// nunjucks: 템플릿 엔진 모듈 불러오기
 const dotenv = require('dotenv'); // dotenv: 환경변수 설정 모듈 불러오기
+const { sequelize } = require('./models');
 
 dotenv.config(); // 환경변수 설정 파일(.env) 불러오기
 const pageRouter = require('./routes/page'); // pageRouter: 페이지 라우터 모듈 불러오기
@@ -16,6 +17,13 @@ nunjucks.configure('views', { // nunjucks 설정: views 폴더를 템플릿 파�
     express: app, // express 객체를 nunjucks에 연결
     watch: true, // 템플릿 파일 변경 시 자동으로 반영되도록 설정
 })
+sequelize.sync()
+    .then(() => {
+        console.log('데이터베이스 연결 성공');
+    })
+    .catch((err) => {
+        console.error(err);
+    })
 
 app.use(morgan('dev')); // morgan 설정: 개발 환경에서 로그를 콘솔에 출력하도록 설정
 app.use(express.static(path.join(__dirname, 'public'))); // 정적 파일 제공: public 폴더를 정적 파일 제공 폴더로 설정
