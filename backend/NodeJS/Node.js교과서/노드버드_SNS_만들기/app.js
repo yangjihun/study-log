@@ -5,12 +5,16 @@ const path = require('path'); // path: 경로 관련 모듈 불러오기
 const session = require('express-session'); // express-session: 세션 관리 모듈 불러오기
 const nunjucks = require('nunjucks');// nunjucks: 템플릿 엔진 모듈 불러오기
 const dotenv = require('dotenv'); // dotenv: 환경변수 설정 모듈 불러오기
+const passport = require('passport');
 const { sequelize } = require('./models');
 
 dotenv.config(); // 환경변수 설정 파일(.env) 불러오기
 const pageRouter = require('./routes/page'); // pageRouter: 페이지 라우터 모듈 불러오기
+const authRouter = require('./routes/auth');
+const passportConfig = require('./passport');
 
 const app = express(); // express 객체 생성
+passportConfig();
 app.set('port', process.env.PORT || 8001); // 포트 설정: 환경변수 PORT가 있으면 그 값을 사용하고, 없으면 8001번 포트를 사용
 app.set('view engine', 'html'); // 뷰 엔진 설정: nunjucks를 사용하기 위해 html로 설정
 nunjucks.configure('views', { // nunjucks 설정: views 폴더를 템플릿 파일이 있는 폴더로 설정
@@ -38,7 +42,14 @@ app.use(session({ // 세션 설정
         httpOnly: true, // httpOnly: true로 설정하면 클라이언트에서 쿠키에 접근할 수 없음
         secure: false, // secure: false로 설정하면 HTTPS가 아닌 HTTP에서도 쿠키를 전송할 수 있음
     },
-}))
+}));
+
+// passport 미들웨어는 반드시 express session 밑에 붙여야 됨
+app.use(passport.initialize()); // req 객체 멤버 생성 (req.user, req.login, req.isAuthenticate, req.logout)
+app.use(passport.session()); // connect.sid라는 이름으로 세션 쿠키가 브라우저로 전송
+
+app.use('/', pageRouter);
+app.use('/auth', authRouter);
 
 app.use('/', pageRouter); // 라우터 설정: '/' 경로로 들어오는 요청은 pageRouter에서 처리하도록 설정
 app.use((req, res, next) => { // 404 처리 미들웨어: 라우터에 없는 경로로 들어오는 요청은 404 에러를 발생시키도록 설정
