@@ -48,10 +48,9 @@ app.use(session({ // 세션 설정
 app.use(passport.initialize()); // req 객체 멤버 생성 (req.user, req.login, req.isAuthenticate, req.logout)
 app.use(passport.session()); // connect.sid라는 이름으로 세션 쿠키가 브라우저로 전송
 
-app.use('/', pageRouter);
+app.use('/', pageRouter); // 라우터 설정: '/' 경로로 들어오는 요청은 pageRouter에서 처리하도록 설정
 app.use('/auth', authRouter);
 
-app.use('/', pageRouter); // 라우터 설정: '/' 경로로 들어오는 요청은 pageRouter에서 처리하도록 설정
 app.use((req, res, next) => { // 404 처리 미들웨어: 라우터에 없는 경로로 들어오는 요청은 404 에러를 발생시키도록 설정
     const error = new Error(`${req.method} ${req.url} 라우터가 없습니다.`); // 에러 객체 생성: 요청 메서드와 요청 URL을 포함한 에러 메시지를 생성
     error.status = 404; // 에러 상태 코드 설정: 404로 설정
