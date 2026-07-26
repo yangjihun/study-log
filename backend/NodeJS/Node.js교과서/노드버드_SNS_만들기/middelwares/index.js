@@ -1,5 +1,5 @@
 exports.isLoggedIn = (req, res, next) => {
-    if (req.isAuthentcated()) { // 패스포트 통해서 로그인 했는지 확인
+    if (req.isAuthenticated()) { // 패스포트 통해서 로그인 했는지 확인
         next();
     } else {
         res.status(403).send('로그인 필요');
