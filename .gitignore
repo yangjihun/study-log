@@ -21,3 +21,7 @@ Thumbs.db
 # Build output
 dist/
 build/
+
+# blog: CI의 npm ci에 lockfile이 필요하고, 수정한 그래프 플러그인은 빌드 결과물(dist)을 커밋한다
+!blog/package-lock.json
+!blog/plugins/graph/dist/
