@@ -34,7 +34,8 @@ jobs:
         run: npm ci
       - name: Build Quartz
         # 콘텐츠는 레포 루트(..)의 노트들
-        run: npx quartz build -d ..
+        # Windows에서 커밋하면 실행 권한이 빠지므로 npx 대신 node로 직접 실행
+        run: node ./quartz/bootstrap-cli.mjs build -d ..
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
