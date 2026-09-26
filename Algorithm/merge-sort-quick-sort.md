@@ -15,7 +15,7 @@
 <img width="462" height="298" alt="image" src="https://github.com/user-attachments/assets/2ea53613-a432-42cc-b574-ab4e453a07f6" />
 
 #### 병합 정렬 코드
-``` Java
+``` java
 static void merge(int[] arr, int left, int mid, int right) {
   int L = left;
   int R = mid+1;
@@ -115,7 +115,7 @@ quickSort(int[] A, int l, int r) {
 이 과정을 재귀적으로 반복하면 전체 배열이 정렬된다.
 
 #### 퀵 정렬 코드
-``` Java
+``` java
 static void quickSort(int[] arr, int left, int right) {
   if (left >= right) return;
 

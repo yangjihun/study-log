@@ -8,7 +8,7 @@ LLM(Large Language Model)은 방대한 텍스트 데이터로 학습되어 다�
 
 **가장 간단한 방법은 관련 자료를 프롬프트에 직접 포함시키는 것이다.**
 
-``` Markdown
+``` markdown
 # 기존 방식 (환각 위험)
 "Yes24 총알배송이 뭔가요?"
 
@@ -25,7 +25,7 @@ LLM(Large Language Model)은 방대한 텍스트 데이터로 학습되어 다�
 - 최신 정보 반영 가능
 
 ### 코드
-``` Python
+``` python
 # 컨텍스트를 포함한 프롬프트 구성
 from langchain_core.prompts import ChatPromptTemplate
 
@@ -109,7 +109,7 @@ Vector Store에서 "유사한 문서"를 찾을 때 가장 많이 사용하는 �
 - `chunk_size` : 청크의 최대 크기 (문자 수)
 - `chunk_overlap` : 청크 간 겹치는 부분 (문맥 유지)
 
-``` Markdown
+``` markdown
 [청킹 예시]
 원본 : "ABCDEFGHIJ" (10글자)
 chunk_size=5, overlap=2
@@ -173,7 +173,7 @@ LangGraph : LangChain 팀에서 개발한 **상태 기반 워크플로우 프레
 - **Node** : 상태를 변환하는 함수 (검색, 생성 등)
 - **Edge** : 노드 간 연결 (순차 실행, 조건부 분기)
 
-``` Markdown
+``` markdown
 [LangGraph RAG 파이프라인 구조]
 
         START

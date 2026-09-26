@@ -15,7 +15,7 @@
 ### 순차적인 비동기 처리
 **Async Callbacks** : 백그라운드에서 실행을 시작할 함수를 호출할 때 인자로 지정
 
-``` JavaScript
+``` javascript
 // 예시 코드
 
 setTimeout(() => {
@@ -27,7 +27,7 @@ setTimeout(() => {
 **Promise-Style** : Modern Web APIs에서의 새로운 코드 스타일
 
 
-``` JavaScript
+``` javascript
 // 예시 코드
 
 wait(500)
@@ -47,7 +47,7 @@ wait(500)
 대부분의 브라우저에서 지원하고 XML이라는 이름과 달리 모든 종류의 데이터를 받아 오는데 사용 가능하다.
 
 **XMLHttpRequest 객체의 메서드 (method)**
-``` JavaScript
+``` javascript
 open("HTTP method", "URL", sync/async)
 ```
 - 요청의 초기화 작업
@@ -55,7 +55,7 @@ open("HTTP method", "URL", sync/async)
 - 서버 URL 지정
 - 동기/비동기 설정
 
-``` JavaScript
+``` javascript
 send(content)
 
 
@@ -64,14 +64,14 @@ send(content)
 ```
 
 ### XMLHttpRequest 프로퍼티 (Property)
-``` JavaScript
+``` javascript
 onreadystatechange
 
 // - 서버에서 응답이 도착했을 때 호출될 콜백함수 지정
 // - 콜백함수는 상태(readyState)가 변경될 때마다 호출
 ```
 
-``` JavaScript
+``` javascript
 readyState
 ```
 
@@ -119,12 +119,12 @@ responseXML
 <input type="button" value="서버에 자료 요청" onclick="requestMsg()"> // 고전 방식
 ```
 
-``` JavaScript
+``` javascript
 const myBtn = document.getElementById("myBtn");
 myBtn.addEventListener("click", requestMsg);
 ```
 
-``` JavaScript
+``` javascript
 function requestMsg() {
   ... // 구현부
 }
@@ -133,7 +133,7 @@ function requestMsg() {
 **2. XMLHttpRequest 객체 생성**
 requestMsg 함수 구현부에 작성
 
-``` JavaScript
+``` javascript
 let xhr = new XMLHttpRequest();
 console.log(xhr);
 console.log("UNSENT", xhr.readyState); // readyState: 0
@@ -141,7 +141,7 @@ console.log("UNSENT", xhr.readyState); // readyState: 0
 
 **3. XMLHttpRequest 콜백함수 설정**
 onreadystatechange에 콜백함수의 이름 지정
-``` JavaScript
+``` javascript
 xhr.onreadystatechange = responseMsg
 console.log(xhr)
 console.log(xhr.onreadystatechange)
@@ -150,12 +150,12 @@ console.log(xhr.onreadystatechange)
 **4. XMLHttpRequest 객체를 통한 비동기화 요청**
 open 메서드에 요청방식, 호출페이지 등록
 
-``` JavaScript
+``` javascript
 xhr.open("GET", "profile.json", true);
 console.log("OPENED", xhr.readyState) // readyState: 1
 ```
 send 메서드로 전송
-``` JavaScript
+``` javascript
 xhr.send(null);
 console.log('*STILL OPENED', xhr.readyState) // readyState: 1
 ```
@@ -165,7 +165,7 @@ readyState가 4이면 모든 데이터 전송 완료
 state가 200이면 서버 데이터 요청 결과 성공
 결과 출력
 
-``` JavaScript
+``` javascript
 if (xhr.readyState == 4) {
   console.log('DONE', xhr.readyState) // readyState: 4
   if (xhr.status == 200) {
@@ -178,14 +178,14 @@ if (xhr.readyState == 4) {
 ### Promise
 비동기 작업의 결과(성공/실패)를 나중에 다루기 위한 객체
 
-``` JavaScript
+``` javascript
 new Promise ( function (resolve, reject) {} )
 
 resolve // - 성공 시 사용
 reject  // - 실패 시 사용
 ```
 
-``` JavaScript
+``` javascript
 const promise = new Promise((resolve, reject) => {
   resolve('resolve'); // -> then 부분을 실행
   // reject('reject');
@@ -249,7 +249,7 @@ fetch(url)
   .catch(console.error);
 ```
 
-``` JavaScript
+``` javascript
 fetch("https://jsonplaceholder.typicode.com/posts/1")
   .then((response) => response.text())
   .then((text) => JSON.parse(text))
