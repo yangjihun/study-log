@@ -1,2 +1,62 @@
 # study-log
-배우는 것을 정리하는 레포지토리입니다.
+
+> 풀스택 개발자 **양지훈**의 학습 기록과 문제 해결 과정
+
+[![Blog](https://img.shields.io/badge/Blog-yangjihun.github.io-20C997?style=for-the-badge&logo=github&logoColor=white)](https://yangjihun.github.io/study-log)
+[![Portfolio](https://img.shields.io/badge/Portfolio-yangjihun.com-000000?style=for-the-badge)](https://yangjihun.com)
+
+---
+
+### 이 블로그의 목적
+
+결론만 남기기보다  
+**어떤 문제가 있었고 → 무엇을 확인했으며 → 어떻게 바꿨는지**를 남깁니다.
+
+---
+
+### 지금 집중하는 것
+
+- 백엔드 아키텍처와 안정적인 서비스 운영
+- 부하 테스트와 모니터링을 통한 성능 개선
+- AI를 개발 과정에 활용하는 방법
+
+---
+
+### 추천 글
+
+| 글 | 한 줄 요약 |
+|----|-----------|
+| [좌석 조회 성능 개선과 가상 대기실](./트러블슈팅/티켓_좌석_조회_트러블슈팅) | k6로 병목을 측정하고 캐시·연결 재사용·대기실로 개선한 과정 |
+| [RAG](./study/ai/rag) | 외부 자료를 찾아 LLM 답변에 활용하는 방법을 정리한 노트 |
+
+---
+
+### 주제별 기록
+
+**서비스 개발**
+- [Backend](./study/backend/)
+- [Frontend](./study/frontend/)
+- [DB](./study/db/)
+
+**설계와 운영**
+- [Software Engineering](./study/software_engineering/)
+- [Network](./study/network/)
+- [OS](./study/os/)
+- [보안](./study/보안/)
+
+**새로운 기술**
+- [AI](./study/ai/)
+- [Algorithm](./study/algorithm/)
+- [블록체인](./study/블록체인/)
+
+**실전 기록**
+- [트러블슈팅](./트러블슈팅/)
+- [코딩 테스트](./coding_test/)
+
+---
+
+### 연결
+
+- [GitHub 프로필](https://github.com/yangjihun)
+- [포트폴리오](https://yangjihun.com)
+- [Velog](https://velog.io/@yangjihun)
