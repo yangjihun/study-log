@@ -32,6 +32,17 @@ jobs:
           cache-dependency-path: blog/package-lock.json
       - name: Install dependencies
         run: npm ci
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: blog/scripts/requirements-notebooks.txt
+      - name: Install notebook dependencies
+        run: python -m pip install -r scripts/requirements-notebooks.txt
+      - name: Test notebook conversion
+        run: python -m unittest discover -s scripts -p 'test_*.py'
+      - name: Convert notebooks to Markdown
+        run: python scripts/convert-notebooks.py
       - name: Build Quartz
         # 콘텐츠는 레포 루트(..)의 노트들
         # Windows에서 커밋하면 실행 권한이 빠지므로 npx 대신 node로 직접 실행
